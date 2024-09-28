@@ -44,17 +44,8 @@ test("update", async () => {
 	expect(updateRes.body.email).toBe(testUser.email);
 });
 
-/*test("logout require auth", async () => {
+test("logout require auth", async () => {
 	const logoutRes = await request(app).delete("/api/auth").send(testUser);
 	expect(logoutRes.status).toBe(401);
 	expect(logoutRes.body).toMatchObject({ message: "unauthorized" });
 });
-
-test("logout", async () => {
-	const logoutRes = await request(app)
-		.delete("/api/auth")
-		.set("Authorization", `Bearer ${testUserAuthToken}`)
-		.send(testUser);
-	expect(logoutRes.status).toBe(200);
-	expect(logoutRes.body).toMatchObject({ message: "logout successful" });
-});*/

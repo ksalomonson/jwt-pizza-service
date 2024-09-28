@@ -1,10 +1,10 @@
 const request = require('supertest');
 const app = require('../service');
-const config = require("../config.js");
+//const config = require("../config.js");
 
 const testUser = { name: 'pizza diner', email: 'reg@test.com', password: 'a' };
-let testUserId;
-let testUserAuthToken;
+//let testUserId;
+//let testUserAuthToken;
 
 beforeAll(async () => {
   testUser.email = Math.random().toString(36).substring(2, 12) + '@test.com';

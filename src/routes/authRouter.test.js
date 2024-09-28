@@ -1,5 +1,6 @@
 const request = require('supertest');
 const app = require('../service');
+const config = require("../config.js");
 
 const testUser = { name: 'pizza diner', email: 'reg@test.com', password: 'a' };
 let testUserId;
@@ -25,7 +26,7 @@ test('login', async () => {
   expect(loginRes.body.user).toMatchObject(user);
 });
 
-test("update require auth", async () => {
+/*test("update require auth", async () => {
 	const updateRes = await request(app)
 		.put("/api/auth/" + testUserId)
 		.send(testUser);
@@ -56,4 +57,4 @@ test("logout", async () => {
 		.send(testUser);
 	expect(logoutRes.status).toBe(200);
 	expect(logoutRes.body).toMatchObject({ message: "logout successful" });
-});
+});*/

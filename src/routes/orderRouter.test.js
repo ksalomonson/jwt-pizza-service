@@ -2,7 +2,7 @@ const { Role, DB } = require("../database/database.js");
 const request = require("supertest");
 const app = require("../service.js");
 const config = require("../config.js");
-const express = require('express');
+
 
 let adminUser;
 let adminUserToken;
@@ -111,7 +111,7 @@ test("Get Order", async () => {
 		],
 	};
 
-	const addRes = await request(app)
+	await request(app)
 		.post("/api/order")
 		.set("Authorization", `Bearer ${adminUserToken}`)
 		.send(order);

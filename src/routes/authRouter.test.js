@@ -3,14 +3,14 @@ const app = require('../service');
 //const config = require("../config.js");
 
 const testUser = { name: 'pizza diner', email: 'reg@test.com', password: 'a' };
-//let testUserId;
-//let testUserAuthToken;
+let testUserId;
+let testUserAuthToken;
 
 beforeAll(async () => {
   testUser.email = Math.random().toString(36).substring(2, 12) + '@test.com';
   const registerRes = await request(app).post('/api/auth').send(testUser);
-  //testUserAuthToken = registerRes.body.token;
-  //testUserId = registerRes.body.user.id;
+  testUserAuthToken = registerRes.body.token;
+  testUserId = registerRes.body.user.id;
 });
 
 test('login', async () => {
@@ -26,7 +26,7 @@ test('login', async () => {
   expect(loginRes.body.user).toMatchObject(user);
 });
 
-/*test("update require auth", async () => {
+test("update require auth", async () => {
 	const updateRes = await request(app)
 		.put("/api/auth/" + testUserId)
 		.send(testUser);
@@ -44,7 +44,7 @@ test("update", async () => {
 	expect(updateRes.body.email).toBe(testUser.email);
 });
 
-test("logout require auth", async () => {
+/*test("logout require auth", async () => {
 	const logoutRes = await request(app).delete("/api/auth").send(testUser);
 	expect(logoutRes.status).toBe(401);
 	expect(logoutRes.body).toMatchObject({ message: "unauthorized" });

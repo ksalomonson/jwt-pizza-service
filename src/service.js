@@ -16,6 +16,8 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use(metrics.requestTracker);
+
 const apiRouter = express.Router();
 app.use('/api', apiRouter);
 apiRouter.use('/auth', authRouter);

@@ -89,7 +89,7 @@ class Metrics{
     }
 
     createMetric(metricPrefix, metricName, metricValue){
-        return `${metricPrefix},source=${config.metrics.source},${metricName}=${metricValue}`
+        return `${metricPrefix},source=${config.metrics.source} ${metricName}=${metricValue}`
     }
 
     createHTTPMetric(metricPrefix, httpMethod, metricName, metricValue){
@@ -116,11 +116,11 @@ class Metrics{
 
     systemMetrics(buf) {
         // CPU usage percentage
-        const cpuUsageMetric = this.createMetric('system', 'cpu-usage', this.getCpuUsagePercentage())
+        const cpuUsageMetric = this.createMetric('system', 'cpu', this.getCpuUsagePercentage())
         buf.add(cpuUsageMetric);
 
         // Memory usage percentage
-        const memoryUsageMetric = this.createMetric('system', 'memory-usage', this.getMemoryUsagePercentage())
+        const memoryUsageMetric = this.createMetric('system', 'memory', this.getMemoryUsagePercentage())
         buf.add(memoryUsageMetric);
     }
 
@@ -147,11 +147,11 @@ class Metrics{
 
     authMetrics(buf) {
         // sucessful login
-        const authSuccessMetric = this.createMetric('auth', 'total-success', this.totalAuthSuccess);
+        const authSuccessMetric = this.createMetric('auth', 'success', this.totalAuthSuccess);
         buf.add(authSuccessMetric);
 
         //  Failed login
-        const authFailMetric = this.createMetric('auth', 'total-fail', this.totalAuthFail);
+        const authFailMetric = this.createMetric('auth', 'fail', this.totalAuthFail);
         buf.add(authFailMetric);
     }
     
